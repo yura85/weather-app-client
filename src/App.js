@@ -9,6 +9,9 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
+import FavoriteCity from './components/FavoriteCity'
+import Home from './components/Home'
+
 import Alert from 'react-bootstrap/Alert'
 
 class App extends Component {
@@ -43,11 +46,17 @@ class App extends Component {
           </Alert>
         ))}
         <main className="container">
+          <AuthenticatedRoute user={user} path='/favorite-city' render={() => (
+            <Home user={user} />
+          )} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
           <Route path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />
+          )} />
+          <AuthenticatedRoute user={user} path='/favorite-city' render={() => (
+            <FavoriteCity alert={this.alert} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
