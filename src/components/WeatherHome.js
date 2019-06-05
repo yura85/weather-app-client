@@ -6,7 +6,7 @@ import Weather from './Weather'
 
 const API_KEY = '291a933f5fe705b63ea6513ea22fa1a3'
 
-class Home extends React.Component {
+class WeatherHome extends React.Component {
   state = {
     temperature: undefined,
     city: undefined,
@@ -71,4 +71,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home
+export default WeatherHome
