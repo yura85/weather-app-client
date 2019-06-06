@@ -7,14 +7,18 @@ import Weather from './Weather'
 const API_KEY = '291a933f5fe705b63ea6513ea22fa1a3'
 
 class WeatherHomeFront extends React.Component {
-  state = {
-    temperature: undefined,
-    city: '',
-    country: '',
-    humidity: undefined,
-    description: undefined,
-    error: undefined
+  constructor (props) {
+    super(props)
+    this.state = {
+      temperature: undefined,
+      city: '',
+      country: '',
+      humidity: undefined,
+      description: undefined,
+      error: undefined
+    }
   }
+
   getWeather = async (event) => {
     console.log('NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN')
     const city = 'Boston'
@@ -53,11 +57,12 @@ class WeatherHomeFront extends React.Component {
                   <Titles />
                 </div>
                 <div className="col-xs-7 form-container">
+                console.log({this.getWeather})
                   <Weather getWeather={this.getWeather}
                     temperature={this.state.temperature}
                     humidity={this.state.humidity}
-                    city='Boston'
-                    country='USA'
+                    city={this.state.city}
+                    country={this.state.country}
                     description={this.state.description}
                     error={this.state.error}
                   />
