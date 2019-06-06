@@ -15,12 +15,24 @@ class City extends Component {
   }
 
   async componentDidMount () {
-    const response = await axios(`${apiUrl}/cities/${this.props.match.params.id}`)
+    const response = await axios({
+      method: 'GET',
+      url: `${apiUrl}/cities/${this.props.match.params.id}`,
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
+    })
     this.setState({ city: response.data.city })
   }
 
   deleteCity = async (id) => {
-    await axios.delete(`${apiUrl}/cities/${id}`)
+    await axios({
+      method: 'DELETE',
+      url: `${apiUrl}/cities/${this.props.match.params.id}`,
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
+    })
     this.setState({ deleted: true })
   }
 
@@ -33,17 +45,17 @@ class City extends Component {
 
     if (deleted) {
       return (<Redirect to={
-        { pathname: '/', state: { msg: 'City successfully deleted!' } }
+        { pathname: '/cities', state: { msg: 'City successfully deleted!' } }
       } />)
     }
 
     return (
       <Layout>
-        <p>{city.name}</p>
+        <p>city: {city.name ? city.name : 'Unknown'}</p>
         <p>country: {city.country ? city.country : 'Unknown'}</p>
         <button onClick={() =>
-          this.deleteCity(city.id)}>Delete City</button>
-        <Link to={'/cities/' + city.id + '/edit'}>
+          this.deleteCity(city._id)}>Delete City</button>
+        <Link to={'/cities/' + city._id + '/edit'}>
           <button>Edit</button>
         </Link>
         <Link to='/cities'>Back to all cities</Link>

@@ -16,6 +16,7 @@ import CityCreate from './components/routes/CityCreate'
 import CityEdit from './components/routes/CityEdit'
 
 import Alert from 'react-bootstrap/Alert'
+import WeatherHome from './components/WeatherHome'
 
 class App extends Component {
   constructor () {
@@ -49,7 +50,7 @@ class App extends Component {
           </Alert>
         ))}
         <main className="container">
-          <AuthenticatedRoute user={user} path='/city' render={() => (
+          <AuthenticatedRoute user={user} path='/' render={() => (
             <Home user={user} />
           )} />
           <Route path='/sign-up' render={() => (
@@ -64,11 +65,19 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <Route exact path='/' component={Home}/>
-          <Route exact path="/cities" component={Cities}/>
-          <Route exact path='/create-city' component={CityCreate}/>
-          <Route exact path='/cities/:id' component={City}/>
-          <Route exact path='/cities/:id/edit' component={CityEdit}/>
+          <AuthenticatedRoute user={user} path='/create-city' render={() => (
+            <CityCreate alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/cities' render={({ match }) => (
+            <Cities alert={this.alert} user={user} match={match} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/cities/:id' render={({ match }) => (
+            <City alert={this.alert} user={user} match={match}/>
+          )} />
+          <AuthenticatedRoute user={user} exact path='/cities/:id/edit' render={({ match }) => (
+            <CityEdit alert={this.alert} user={user} match={match}/>
+          )} />
+          <Route exact path="/weather-home" component={WeatherHome}/>
         </main>
       </React.Fragment>
     )

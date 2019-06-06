@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 const Form = props => (
@@ -6,7 +5,6 @@ const Form = props => (
     <input type="text" name="city" placeholder="City..."/>
     <input type="text" name="country" placeholder="Country..."/>
     <button>Get Weather</button>
-    <button>Add to List</button>
   </form>
 )
 

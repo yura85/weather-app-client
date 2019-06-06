@@ -6,14 +6,14 @@ const CityForm = ({ city, handleSubmit, handleChange, cancelPath }) => (
     <label>City</label>
     <input
       name="name"
-      placeholder="City Name"
+      placeholder="City ..."
       value={city.name}
       onChange={handleChange}
     />
     <label>Country</label>
     <input
       name="country"
-      placeholder="Country Name"
+      placeholder="Country ..."
       value={city.country}
       onChange={handleChange}
     />

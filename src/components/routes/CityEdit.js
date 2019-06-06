@@ -18,7 +18,13 @@ class CityEdit extends Component {
   }
 
   async componentDidMount () {
-    const response = await axios(`${apiUrl}/cities/${this.props.match.params.id}`)
+    const response = await axios({
+      method: 'GET',
+      url: `${apiUrl}/cities/${this.props.match.params.id}`,
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
+    })
     this.setState({ city: response.data.city })
   }
 
@@ -37,8 +43,11 @@ class CityEdit extends Component {
   handleSubmit = async (event) => {
     event.preventDefault()
     await axios({
-      url: `${apiUrl}/cities/${this.props.match.params.id}`,
       method: 'PATCH',
+      url: `${apiUrl}/cities/${this.props.match.params.id}`,
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      },
       data: {
         city: this.state.city
       }
@@ -47,7 +56,7 @@ class CityEdit extends Component {
   }
 
   render () {
-    const { updated, city } = this.state
+    const { updated, city, country } = this.state
     if (updated) {
       return <Redirect to={`/cities/${this.props.match.params.id}`}/>
     }
@@ -55,6 +64,7 @@ class CityEdit extends Component {
       <Layout>
         <CityForm
           city={city}
+          country={country}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           cancelPath={`/cities/${this.props.match.params.id}`}

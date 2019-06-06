@@ -1,9 +1,11 @@
 import React from 'react'
 import Layout from '../shared/Layout'
+import WeatherHomeFront from '../WeatherHomeFront'
 const Home = () => (
 
   <Layout>
-    <h4>The Weather App</h4>
+    <WeatherHomeFront
+    />
   </Layout>
 )
 export default Home
