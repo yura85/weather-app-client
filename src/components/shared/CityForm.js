@@ -18,7 +18,7 @@ const CityForm = ({ city, handleSubmit, handleChange, cancelPath }) => (
       onChange={handleChange}
     />
     <button type="submit">Submit</button>
-    <Link to={cancelPath}> <button>Cencel</button></Link>
+    <Link to={cancelPath}> <button>Cancel</button></Link>
   </form>
 
 )
