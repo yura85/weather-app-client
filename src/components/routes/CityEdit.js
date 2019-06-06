@@ -30,7 +30,6 @@ class CityEdit extends Component {
 
   handleChange = (event) => {
     // access and update state
-    console.log('change staff', event)
     const updatedField = {
       [event.target.name]: event.target.value
     }

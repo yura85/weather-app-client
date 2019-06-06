@@ -39,6 +39,9 @@ class App extends Component {
   render () {
     const { alerts, user } = this.state
 
+    // <AuthenticatedRoute user={user} path='/' render={() => (
+    //   <Home user={user} />
+    // )} />
     return (
       <React.Fragment>
         <Header user={user} />
@@ -50,9 +53,7 @@ class App extends Component {
           </Alert>
         ))}
         <main className="container">
-          <AuthenticatedRoute user={user} path='/' render={() => (
-            <Home user={user} />
-          )} />
+          <Route exact path="/" component={Home}/>
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />

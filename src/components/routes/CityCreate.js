@@ -23,7 +23,6 @@ class CityCreate extends Component {
   handleSubmit = async (event) => {
     // make axios reuest, handle success, etc
     event.preventDefault()
-    console.log('submited', event)
     const response = await axios({
       method: 'POST',
       url: `${apiUrl}/cities`,
@@ -42,11 +41,9 @@ class CityCreate extends Component {
 
   handleChange = (event) => {
     // access and update state
-    console.log('change staff', event)
     const updatedField = {
       [event.target.name]: event.target.value
     }
-    console.log('+++++++++++', updatedField)
 
     const editedCity = Object.assign(this.state.city, updatedField)
 
@@ -54,7 +51,6 @@ class CityCreate extends Component {
   }
   render () {
     const { createdCityId, city, country } = this.state
-    console.log('*********', createdCityId, city, country)
 
     if (createdCityId) {
       return (<Redirect to={ { pathname: '/cities' } } />)

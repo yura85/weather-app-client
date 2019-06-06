@@ -13,16 +13,21 @@ class Cities extends Component {
     }
   }
 
-  async componentDidMount () {
-    console.log(this.props)
-    const response = await axios({
+  componentDidMount () {
+    const { user } = this.props
+    axios({
       method: 'GET',
       url: `${apiUrl}/cities`,
       headers: {
-        'Authorization': `Token token=${this.props.user.token}`
+        'Authorization': `Token token=${user.token}`
       }
     })
-    this.setState({ cities: response.data.cities })
+      .then((response) => {
+        const cities = response.data.cities
+        const filterCities = cities.filter(city => user._id === city.owner)
+        this.setState({ cities: filterCities })
+      })
+      .catch((error) => console.error(error))
   }
 
   render () {
