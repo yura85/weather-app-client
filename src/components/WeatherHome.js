@@ -4,7 +4,7 @@ import Titles from './Titles'
 import Form from './Form'
 import Weather from './Weather'
 
-const API_KEY = '1ab49347a97cd4c9d16396b82fab91b5'
+const API_KEY = 'dd608606ad10e8cae06fbf4203ff1570'
 
 class WeatherHome extends React.Component {
   state = {
@@ -19,7 +19,7 @@ class WeatherHome extends React.Component {
     event.preventDefault()
     const city = event.target.elements.city.value
     const country = event.target.elements.country.value
-    const apicall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
+    const apicall = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
     const data = await apicall.json()
     if (city && country) {
       this.setState({

@@ -4,7 +4,7 @@ import TitlesBoston from './TitlesBoston'
 // import Form from './Form'
 import Weather from './Weather'
 
-const API_KEY = '1ab49347a97cd4c9d16396b82fab91b5'
+const API_KEY = 'dd608606ad10e8cae06fbf4203ff1570'
 
 class WeatherHomeFront extends React.Component {
       state = {
@@ -20,9 +20,8 @@ class WeatherHomeFront extends React.Component {
   getWeather = async () => {
     const city = 'Boston'
     const country = 'USA'
-    const apicall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
+    const apicall = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
     const data = await apicall.json()
-    console.log(data)
     this.setState({
       temperature: data.main.temp,
       city: data.name,
