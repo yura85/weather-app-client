@@ -1,6 +1,6 @@
 {
   "name": "weather-app-client",
-  "homepage": "https://yura85.github.io/weather-app-clinet",
+  "homepage": "https://yura85.github.io/weather-app-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
