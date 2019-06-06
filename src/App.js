@@ -39,9 +39,6 @@ class App extends Component {
   render () {
     const { alerts, user } = this.state
 
-    // <AuthenticatedRoute user={user} path='/' render={() => (
-    //   <Home user={user} />
-    // )} />
     return (
       <React.Fragment>
         <Header user={user} />
