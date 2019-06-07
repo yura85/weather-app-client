@@ -8,6 +8,7 @@ const authenticatedOptions = (
     <Link to="/cities">Your Cities</Link>
     <Link to="/change-password">Change Password</Link>
     <Link to="/sign-out">Sign Out</Link>
+    <Link to="/weather-home">Get Weather</Link>
   </React.Fragment>
 )
 
@@ -20,7 +21,6 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
   <React.Fragment>
-    <Link to="/weather-home">get weather</Link>
     <Link to="/">Home</Link>
   </React.Fragment>
 )

@@ -4,6 +4,7 @@ import CityForm from '../shared/CityForm'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { Redirect } from 'react-router-dom'
+import messages from '../../auth/messages'
 
 class CityEdit extends Component {
   constructor (props) {
@@ -41,6 +42,7 @@ class CityEdit extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault()
+    const { alert } = this.props
     await axios({
       method: 'PATCH',
       url: `${apiUrl}/cities/${this.props.match.params.id}`,
@@ -51,6 +53,7 @@ class CityEdit extends Component {
         city: this.state.city
       }
     })
+    alert(messages.editSuccess, 'success')
     this.setState({ updated: true })
   }
 

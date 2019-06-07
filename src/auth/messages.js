@@ -9,5 +9,7 @@ export default {
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password' +
                          ' and try again.',
-  addCitySuccess: 'City added to your list'
+  addCitySuccess: 'City added to your list',
+  editSuccess: 'You successfully edit',
+  deleteSuccess: 'City was removed from your list'
 }

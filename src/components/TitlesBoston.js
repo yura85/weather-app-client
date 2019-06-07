@@ -2,7 +2,7 @@ import React from 'react'
 
 const TitlesBoston = () => (
   <div>
-    <h3 className="title-container-subtitle">Welcome current weather in Boston is:</h3>
+    <h3 className="title-container-subtitle">Welcome current weather is:</h3>
   </div>
 )
 

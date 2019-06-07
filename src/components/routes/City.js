@@ -3,6 +3,7 @@ import Layout from '../shared/Layout'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import messages from '../../auth/messages'
 
 class City extends Component {
   constructor (props) {
@@ -26,6 +27,7 @@ class City extends Component {
   }
 
   deleteCity = async (id) => {
+    const { alert } = this.props
     await axios({
       method: 'DELETE',
       url: `${apiUrl}/cities/${this.props.match.params.id}`,
@@ -33,6 +35,7 @@ class City extends Component {
         'Authorization': `Token token=${this.props.user.token}`
       }
     })
+    alert(messages.deleteSuccess, 'success')
     this.setState({ deleted: true })
   }
 
@@ -58,7 +61,7 @@ class City extends Component {
         <Link to={'/cities/' + city._id + '/edit'}>
           <button>Edit</button>
         </Link>
-        <Link to='/cities'>Back to all cities</Link>
+        <Link to='/cities'>Back to list</Link>
       </Layout>
 
     )

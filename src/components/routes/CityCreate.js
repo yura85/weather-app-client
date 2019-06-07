@@ -6,6 +6,7 @@ import CityForm from '../shared/CityForm'
 
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import messages from '../../auth/messages'
 
 class CityCreate extends Component {
   constructor (props) {
@@ -23,6 +24,7 @@ class CityCreate extends Component {
   handleSubmit = async (event) => {
     // make axios reuest, handle success, etc
     event.preventDefault()
+    const { alert } = this.props
     const response = await axios({
       method: 'POST',
       url: `${apiUrl}/cities`,
@@ -36,6 +38,7 @@ class CityCreate extends Component {
         }
       }
     })
+    alert(messages.addCitySuccess, 'success')
     this.setState({ createdCityId: response.data.city._id })
   }
 

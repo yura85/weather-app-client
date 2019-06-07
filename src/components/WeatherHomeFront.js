@@ -20,7 +20,7 @@ class WeatherHomeFront extends React.Component {
   getWeather = async () => {
     const city = 'Boston'
     const country = 'USA'
-    const apicall = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
+    const apicall = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=imperial`)
     const data = await apicall.json()
     this.setState({
       temperature: data.main.temp,
