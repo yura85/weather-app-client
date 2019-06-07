@@ -7,7 +7,6 @@ Welcome to the weather app. It is a simple app that allows you to check the weat
 * HTML5
 * Bootstrap
 * React
-* Handlebars
 * Axios
 * Express
 * MongoDB
