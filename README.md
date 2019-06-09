@@ -2,6 +2,10 @@
 
 Welcome to the weather app. It is a simple app that allows you to check the weather in any location and also create a list of favorite cities.
 
+## Screnshot
+
+![WeatherApp](https://imgur.com/wmRgpv8.png)
+
 ## Technologies Used
 
 * HTML5
@@ -13,9 +17,23 @@ Welcome to the weather app. It is a simple app that allows you to check the weat
 * Mongoose
 * Heroku
 
+## Installation Instructions
+
+### Front End Installation
+1) Fork and Clone this repository.
+2) Install dependencies with npm install.
+3) Run the development server with npm start.
+
+## Back End Instalation
+1) Fork and Clone this repository.
+2) Install dependencies with npm install.
+3) Run the development server with nmp run server
+
 ## Planning
 
-Throughout the project, I had daily standups and used mob programming and pair programming on most of the features.
+For the capstone project we have option to choose our own prefered tech stack to implement our app. I chose to use Express for the backend and React for the front end.
+
+On the first day, I set up front and backend repositories. Then I concentrated to meet MVP.
 
 ### Planned Schedule
 
