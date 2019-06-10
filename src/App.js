@@ -75,7 +75,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/cities/:id/edit' render={({ match }) => (
             <CityEdit alert={this.alert} user={user} match={match}/>
           )} />
-          <Route exact path="/weather-home" component={WeatherHome}/>
+          <AuthenticatedRoute user={user} exact path='/weather-home' render={({ match }) => (
+            <WeatherHome alert={this.alert} user={user} match={match}/>
+          )} />
         </main>
       </React.Fragment>
     )

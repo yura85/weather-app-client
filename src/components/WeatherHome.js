@@ -1,19 +1,23 @@
 import React from 'react'
 
 import Titles from './Titles'
-import Form from './Form'
+// import Form from './Form'
 import Weather from './Weather'
 
 const API_KEY = 'dd608606ad10e8cae06fbf4203ff1570'
 
 class WeatherHome extends React.Component {
-  state = {
-    temperature: undefined,
-    city: undefined,
-    country: undefined,
-    humidity: undefined,
-    description: undefined,
-    error: undefined
+  constructor (props) {
+    super(props)
+    this.state = {
+      temperature: '',
+      city: '',
+      country: '',
+      humidity: '',
+      description: '',
+      error: '',
+      isClear: false
+    }
   }
   getWeather = async (event) => {
     event.preventDefault()
@@ -28,7 +32,8 @@ class WeatherHome extends React.Component {
         country: data.sys.country,
         humidity: data.main.humidity,
         description: data.weather[0].description,
-        error: ''
+        error: '',
+        isClear: true
       })
     } else {
       this.setState({
@@ -40,7 +45,11 @@ class WeatherHome extends React.Component {
         error: 'Please enter the values.'
       })
     }
+    if (this.state.isClear === true) {
+      document.getElementById('myForm').reset()
+    }
   }
+
   render () {
     return (
       <div>
@@ -48,7 +57,11 @@ class WeatherHome extends React.Component {
           <Titles />
         </div>
         <div>
-          <Form getWeather={this.getWeather} />
+          <form onSubmit={this.getWeather} id="myForm">
+            <input type="text" name="city" placeholder="City..."/>
+            <input type="text" name="country" placeholder="Country..."/>
+            <button >Get Weather</button>
+          </form>
           <Weather
             temperature={this.state.temperature}
             humidity={this.state.humidity}
