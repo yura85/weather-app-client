@@ -87,8 +87,10 @@ render () {
 
   return (
     <Layout>
-      <p className="weather__key">City: <span className="weather__value">{city.name ? city.name : 'Unknown'}</span></p>
-      <p className="weather__key">Country: <span className="weather__value">{city.country ? city.country : 'Unknown'}</span></p>
+      <div className="weather__info">
+        <p className="weather__key">City: <span className="weather__value">{city.name ? city.name : 'Unknown'}</span></p>
+        <p className="weather__key">Country: <span className="weather__value">{city.country ? city.country : 'Unknown'}</span></p>
+      </div>
       <Weather
         temperature={this.state.temperature}
         humidity={this.state.humidity}
