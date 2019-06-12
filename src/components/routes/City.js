@@ -1,11 +1,13 @@
 
 import React, { Component } from 'react'
-import Layout from '../shared/Layout'
+// import Layout from '../shared/Layout'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import messages from '../../auth/messages'
 import Weather from '../Weather'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 const API_KEY = 'dd608606ad10e8cae06fbf4203ff1570'
 
@@ -86,29 +88,31 @@ render () {
   }
 
   return (
-    <Layout>
-      <div className="weather__info">
-        <p className="weather__key">City: <span className="weather__value">{city.name ? city.name : 'Unknown'}</span></p>
-        <p className="weather__key">Country: <span className="weather__value">{city.country ? city.country : 'Unknown'}</span></p>
-      </div>
-      <Weather
-        temperature={this.state.temperature}
-        humidity={this.state.humidity}
-        city={this.state.city}
-        country={this.state.country}
-        description={this.state.description}
-        error={this.state.error}
-      />
-      <button onClick={() =>
-        this.deleteCity(city._id)}>Delete City</button>
-      <button onClick={() =>
-        this.getWeather(city.name, city.country)}>Get Weather</button>
-      <Link to={'/cities/' + city._id + '/edit'}>
-        <button>Edit</button>
-      </Link>
-      <Link to='/cities'>Back to list</Link>
-    </Layout>
-
+    <Card bg="light" border="primary" style={{ width: '28rem' }}>
+      <Card.Body>
+        <Card.Title>
+          <p>Location:  <span className="weather__value">{city.name ? city.name : 'Unknown'}</span>, <span className="weather__value">{city.country ? city.country : 'Unknown'}</span> </p>
+        </Card.Title>
+        <Weather
+          temperature={this.state.temperature}
+          humidity={this.state.humidity}
+          city={this.state.city}
+          country={this.state.country}
+          description={this.state.description}
+          error={this.state.error}
+        />
+        <Link to='/cities'>
+          <Button variant="info" size="sm">Back to list</Button>
+        </Link>
+        <Link to={'/cities/' + city._id + '/edit'}>
+          <Button variant="primary" size="sm" >Edit</Button>
+        </Link>
+        <Button variant="danger" size="sm" onClick={() =>
+          this.deleteCity(city._id)}>Remove</Button>
+        <Button variant="success" size="sm" onClick={() =>
+          this.getWeather(city.name, city.country)}>Get Weather</Button>
+      </Card.Body>
+    </Card>
   )
 }
 }

@@ -3,6 +3,9 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import Layout from '../shared/Layout'
 import { Link } from 'react-router-dom'
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
+import Button from 'react-bootstrap/Button'
 
 class Cities extends Component {
   constructor () {
@@ -32,18 +35,24 @@ class Cities extends Component {
 
   render () {
     const cities = this.state.cities.map(city => (
-      <li key={city._id}>
+      <ListGroup.Item key={city._id}>
         <Link to={'/cities/' + city._id}>{city.name ? city.name : 'Unknown citty name'}</Link>
-      </li>
+      </ListGroup.Item>
     ))
 
     return (
       <Layout>
-        <Link to={'create-city/'}>Add City</Link>
-        <p>All the cities</p>
-        <ul>
-          {cities}
-        </ul>
+        <Card bg="info" text="white" style={{ width: '18rem' }}>
+          <Card.Body>
+            <Card.Title>Your Favorite Cities</Card.Title>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                {cities}
+              </ListGroup.Item>
+            </ListGroup>
+            <Link to={'create-city/'}><Button variant="success">Add New City</Button></Link>
+          </Card.Body>
+        </Card>
       </Layout>
     )
   }
