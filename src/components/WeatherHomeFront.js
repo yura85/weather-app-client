@@ -13,6 +13,9 @@ class WeatherHomeFront extends React.Component {
         country: '',
         humidity: undefined,
         description: undefined,
+        pressure: undefined,
+        icon: '',
+        date: '',
         error: undefined,
         isWeatherLoaded: false
       }
@@ -28,6 +31,9 @@ class WeatherHomeFront extends React.Component {
       country: data.sys.country,
       humidity: data.main.humidity,
       description: data.weather[0].description,
+      pressure: data.main.pressure,
+      icon: data.weather[0].icon,
+      date: data.dt,
       error: '',
       isWeatherLoaded: true
     })
@@ -43,11 +49,14 @@ class WeatherHomeFront extends React.Component {
         </div>
         <div>
           <Weather
+            date={this.state.date}
             temperature={this.state.temperature}
             humidity={this.state.humidity}
             city={this.state.city}
             country={this.state.country}
             description={this.state.description}
+            pressure={this.state.pressure}
+            icon={this.state.icon}
             error={this.state.error}
           />
         </div>

@@ -22,6 +22,9 @@ class City extends Component {
       country: '',
       humidity: '',
       description: '',
+      pressure: '',
+      date: '',
+      icon: '',
       error: '',
       isWeatherLoaded: false
     }
@@ -47,6 +50,9 @@ class City extends Component {
         temperature: data.main.temp,
         humidity: data.main.humidity,
         description: data.weather[0].description,
+        pressure: data.main.pressure,
+        icon: data.weather[0].icon,
+        date: data.dt,
         error: '',
         isClear: true,
         isWeatherLoaded: true
@@ -58,6 +64,9 @@ class City extends Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
+        pressure: undefined,
+        icon: undefined,
+        date: undefined,
         error: 'Please enter the values.',
         isWeatherLoaded: false
       })
@@ -104,6 +113,9 @@ render () {
           city={this.state.city}
           country={this.state.country}
           description={this.state.description}
+          pressure={this.state.pressure}
+          icon={this.state.icon}
+          date={this.state.date}
           error={this.state.error}
         />
         <Link to='/cities'>
