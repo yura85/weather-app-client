@@ -1,11 +1,32 @@
 $charcoal: #bbb;
+$darkblue: #024059;
+$teal: #03A696;
+$green: #63BF84;
+$yellow: #F5ED0F;
+$orange: #F28963;
+$black: #000000;
+
+.welcome-message {
+  align-items: center;
+  color: white;
+  display: flex;
+  padding-right: 20px;
+}
+
+.nav-brand {
+  align-items: left;
+  text-shadow: -3px 7px 8px #141414;
+}
 
 .main-header {
+  background-color: #d7dad4;
+  margin-bottom: 10px;
   align-items: center;
-  border-bottom: 1px solid $charcoal;
   display: flex;
+  font-family: 'Baloo Da', cursive;
   height: 100px;
   padding: 0 20px;
+  box-shadow: 0 8px 6px -6px $black;
 
   a,
   span {
@@ -14,11 +35,15 @@ $charcoal: #bbb;
   }
 }
 
-.main-header > nav {
+.main-header > Nav {
   align-items: center;
   display: flex;
   flex-grow: 1;
   justify-content: flex-end;
+}
+
+.bolt {
+  color: $yellow;
 }
 
 @media (max-width: 600px) {
@@ -41,7 +66,6 @@ $charcoal: #bbb;
 
     a,
     span {
-      border: 1px solid $charcoal;
       margin-bottom: 5px;
       text-align: center;
       width: 80%;

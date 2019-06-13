@@ -22,7 +22,8 @@ class City extends Component {
       country: '',
       humidity: '',
       description: '',
-      error: ''
+      error: '',
+      isWeatherLoaded: false
     }
   }
 
@@ -47,7 +48,8 @@ class City extends Component {
         humidity: data.main.humidity,
         description: data.weather[0].description,
         error: '',
-        isClear: true
+        isClear: true,
+        isWeatherLoaded: true
       })
     } else {
       this.setState({
@@ -56,7 +58,8 @@ class City extends Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
-        error: 'Please enter the values.'
+        error: 'Please enter the values.',
+        isWeatherLoaded: false
       })
     }
   }
@@ -86,12 +89,14 @@ render () {
       { pathname: '/cities', state: { msg: 'City successfully deleted!' } }
     } />)
   }
-
+  if (!this.state.isWeatherLoaded) {
+    this.getWeather(city.name, city.country)
+  }
   return (
-    <Card bg="light" border="primary" style={{ width: '28rem' }}>
+    <Card bg="info" text="white" style={{ width: '60rem' }}>
       <Card.Body>
         <Card.Title>
-          <p>Location:  <span className="weather__value">{city.name ? city.name : 'Unknown'}</span>, <span className="weather__value">{city.country ? city.country : 'Unknown'}</span> </p>
+          <p className="location">Location:  <span className="weather__value">{city.name ? city.name : 'Unknown'}</span>, <span className="weather__value">{city.country ? city.country : 'Unknown'}</span> </p>
         </Card.Title>
         <Weather
           temperature={this.state.temperature}
@@ -102,15 +107,14 @@ render () {
           error={this.state.error}
         />
         <Link to='/cities'>
-          <Button variant="info" size="sm">Back to list</Button>
+          <Button variant="primary" size="sm">Back to list</Button>
         </Link>
         <Link to={'/cities/' + city._id + '/edit'}>
           <Button variant="primary" size="sm" >Edit</Button>
         </Link>
         <Button variant="danger" size="sm" onClick={() =>
           this.deleteCity(city._id)}>Remove</Button>
-        <Button variant="success" size="sm" onClick={() =>
-          this.getWeather(city.name, city.country)}>Get Weather</Button>
+
       </Card.Body>
     </Card>
   )

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
 
 import './Header.scss'
 
@@ -19,20 +21,18 @@ const unauthenticatedOptions = (
   </React.Fragment>
 )
 
-const alwaysOptions = (
-  <React.Fragment>
-    <Link to="/">Home</Link>
-  </React.Fragment>
-)
-
 const Header = ({ user }) => (
   <header className="main-header">
-    <h1>The Weather App</h1>
-    <nav>
-      { user && <span>Welcome, {user.email}</span>}
-      { user ? authenticatedOptions : unauthenticatedOptions }
-      { alwaysOptions }
-    </nav>
+    <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark">
+      <Navbar.Brand href="#">Weather App</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="ml-auto">
+          { user && <span className="welcome-message">Welcome, {user.email}</span>}
+          { user ? authenticatedOptions : unauthenticatedOptions }
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   </header>
 )
 
