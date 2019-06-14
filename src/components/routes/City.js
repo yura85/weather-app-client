@@ -115,7 +115,6 @@ render () {
           description={this.state.description}
           pressure={this.state.pressure}
           icon={this.state.icon}
-          date={this.state.date}
           error={this.state.error}
         />
         <Link to='/cities'>

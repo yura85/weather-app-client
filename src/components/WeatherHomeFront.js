@@ -16,6 +16,7 @@ class WeatherHomeFront extends React.Component {
         pressure: undefined,
         icon: '',
         date: '',
+        wind: '',
         error: undefined,
         isWeatherLoaded: false
       }
@@ -34,6 +35,7 @@ class WeatherHomeFront extends React.Component {
       pressure: data.main.pressure,
       icon: data.weather[0].icon,
       date: data.dt,
+      wind: data.wind.speed,
       error: '',
       isWeatherLoaded: true
     })
@@ -57,6 +59,7 @@ class WeatherHomeFront extends React.Component {
             description={this.state.description}
             pressure={this.state.pressure}
             icon={this.state.icon}
+            wind={this.state.wind}
             error={this.state.error}
           />
         </div>
