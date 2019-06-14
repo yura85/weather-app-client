@@ -23,6 +23,7 @@ Welcome to the weather app. It is a simple app that allows you to check the weat
 1) Fork and Clone this repository.
 2) Install dependencies with npm install.
 3) Run the development server with npm start.
+4) Install moment.js witn npm install moment.
 
 ## Back End Instalation
 1) Fork and Clone this repository.
