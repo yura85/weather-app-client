@@ -32,6 +32,12 @@ $charcoal: #ccc;
   background-color: $error;
 }
 
+.alert {
+  position: fixed;
+  top: 8%;
+  z-index: 10;
+}
+
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -143,6 +149,11 @@ button:active {
 .location {
   padding: 20px;
 }
+
+.title_boston {
+margin: 15px;
+}
+
 .weather__info {
   width: 60%;
   font-size: 20px;
@@ -172,4 +183,39 @@ button:active {
   font-size: 20px;
   letter-spacing: 1px;
   font-weight: 200;
+}
+
+.flash-success,
+.flash-warning,
+.flash-error {
+  border: 1px solid $charcoal;
+  display: block;
+  left: 25%;
+  padding: 30px;
+  position: fixed;
+  text-align: center;
+  top: 15%;
+  width: 50%;
+  z-index: 1;
+}
+
+.flash-success {
+  background-color: $success;
+}
+
+.flash-warning {
+  background-color: $warning;
+}
+
+.flash-error {
+  background-color: $error;
+}
+
+@media (max-width: 600px) {
+.main-conteiner {
+    flex-direction: column;
+    font-size: 0.7em;
+    height: auto;
+    padding: 10px;
+}
 }

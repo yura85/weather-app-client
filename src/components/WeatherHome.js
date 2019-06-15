@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Titles from './Titles'
-// import Form from './Form'
+import Card from 'react-bootstrap/Card'
 import Weather from './Weather'
 
 const API_KEY = 'dd608606ad10e8cae06fbf4203ff1570'
@@ -15,6 +15,10 @@ class WeatherHome extends React.Component {
       country: '',
       humidity: '',
       description: '',
+      pressure: '',
+      icon: '',
+      date: '',
+      wind: '',
       error: '',
       isClear: false
     }
@@ -32,6 +36,10 @@ class WeatherHome extends React.Component {
         country: data.sys.country,
         humidity: data.main.humidity,
         description: data.weather[0].description,
+        pressure: data.main.pressure,
+        icon: data.weather[0].icon,
+        date: data.dt,
+        wind: data.wind.speed,
         error: '',
         isClear: true
       })
@@ -42,7 +50,12 @@ class WeatherHome extends React.Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
-        error: 'Please enter the values.'
+        pressure: undefined,
+        icon: undefined,
+        date: undefined,
+        wind: undefined,
+        error: 'Please enter the values.',
+        isClear: false
       })
     }
     if (this.state.isClear === true) {
@@ -53,24 +66,28 @@ class WeatherHome extends React.Component {
   render () {
     return (
       <div>
-        <div>
+        <Card bg="info" text="white" style={{ width: '58rem', display: 'flex' }}>
           <Titles />
-        </div>
-        <div>
-          <form onSubmit={this.getWeather} id="myForm">
-            <input type="text" name="city" placeholder="City..."/>
-            <input type="text" name="country" placeholder="Country..."/>
-            <button >Get Weather</button>
-          </form>
-          <Weather
-            temperature={this.state.temperature}
-            humidity={this.state.humidity}
-            city={this.state.city}
-            country={this.state.country}
-            description={this.state.description}
-            error={this.state.error}
-          />
-        </div>
+          <div className="getweather_form">
+            <form onSubmit={this.getWeather} id="myForm">
+              <input type="text" name="city" placeholder="City..."/>
+              <input type="text" name="country" placeholder="Country..."/>
+              <button >Get Weather</button>
+            </form>
+            <Weather
+              date={this.state.date}
+              temperature={this.state.temperature}
+              humidity={this.state.humidity}
+              city={this.state.city}
+              country={this.state.country}
+              description={this.state.description}
+              pressure={this.state.pressure}
+              icon={this.state.icon}
+              wind={this.state.wind}
+              error={this.state.error}
+            />
+          </div>
+        </Card>
       </div>
     )
   }
