@@ -14,8 +14,8 @@ import Home from './components/routes/Home'
 import City from './components/routes/City'
 import CityCreate from './components/routes/CityCreate'
 import CityEdit from './components/routes/CityEdit'
+import AutoDismissAlert from './AutoDismissAlert'
 
-import Alert from 'react-bootstrap/Alert'
 import WeatherHome from './components/WeatherHome'
 
 class App extends Component {
@@ -43,11 +43,10 @@ class App extends Component {
       <React.Fragment>
         <Header user={user} />
         {alerts.map((alert, index) => (
-          <Alert key={index} dismissible variant={alert.type}>
-            <Alert.Heading>
-              {alert.message}
-            </Alert.Heading>
-          </Alert>
+          <AutoDismissAlert
+            key={index}
+            alert={alert}
+          />
         ))}
         <main className="container">
           <Route exact path="/" component={Home}/>

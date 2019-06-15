@@ -53,6 +53,7 @@ class City extends Component {
         pressure: data.main.pressure,
         icon: data.weather[0].icon,
         date: data.dt,
+        wind: data.wind.speed,
         error: '',
         isClear: true,
         isWeatherLoaded: true
@@ -67,6 +68,7 @@ class City extends Component {
         pressure: undefined,
         icon: undefined,
         date: undefined,
+        wind: undefined,
         error: 'Please enter the values.',
         isWeatherLoaded: false
       })
@@ -102,7 +104,7 @@ render () {
     this.getWeather(city.name, city.country)
   }
   return (
-    <Card bg="info" text="white" style={{ width: '60rem' }}>
+    <Card bg="info" text="white" style={{ width: '60rem', display: 'flex' }}>
       <Card.Body>
         <Card.Title>
           <p className="location">Location:  <span className="weather__value">{city.name ? city.name : 'Unknown'}</span>, <span className="weather__value">{city.country ? city.country : 'Unknown'}</span> </p>
@@ -115,6 +117,7 @@ render () {
           description={this.state.description}
           pressure={this.state.pressure}
           icon={this.state.icon}
+          wind={this.state.wind}
           error={this.state.error}
         />
         <Link to='/cities'>
